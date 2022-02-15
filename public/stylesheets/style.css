@@ -1,0 +1,21 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace; }
+
+body {
+  width: 100%;
+  height: 100%;
+  display: block; }
+  body #navHeader {
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+    border-bottom: 1px solid gainsboro;
+    display: flex; }
+    body #navHeader #logo {
+      height: 70px;
+      margin-left: 50px; }
+
+/*# sourceMappingURL=style.css.map */
