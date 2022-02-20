@@ -7,9 +7,8 @@ html
   body
     #navHeader 
       img(src="/images/ezpsy.png", alt="ezpsy logo" id='logo')
-    ul#navList 
-      - var navList = ['Home',"Docx","Help","GitHub"]
-        each nav in navList 
-          li(id= 'nav'+nav)= nav
-
-    //- block content
+      ul#navList 
+        - var navList = ['Home',"Docx","Help","GitHub"]
+          each nav in navList 
+            li(id= 'nav'+nav)= nav
+    block content

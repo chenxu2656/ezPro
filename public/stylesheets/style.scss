@@ -18,5 +18,23 @@ body {
             height: 70px;
             margin-left: 50px;
         }
+        #navList{
+            width: 600px;
+            li {
+                display: inline-block;
+                width: 100px;
+                text-align: center;
+                line-height: 70px;
+            }
+        }
+        #signList{
+            width: 600px;
+            li {
+                display: inline-block;
+                width: 100px;
+                text-align: center;
+                line-height: 70px;
+            }
+        }
     }
 }

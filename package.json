@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "watch:css": "sass -w public/stylesheets/style.scss:public/stylesheets/style.scss",
+    "watch:css": "sass -w public/stylesheets/style.scss:public/stylesheets/style.css",
     "watch:node": "cross-env NODE_ENV=dev nodemon ./bin/www",
     "start": "node ./bin/www"
   },
@@ -14,6 +14,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "mongoose": "^6.2.1",
     "morgan": "~1.9.1",
     "sass": "^1.49.7"
   }
