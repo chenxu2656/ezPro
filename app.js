@@ -1,46 +1,40 @@
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-
+const bodyParser = require('body-parser')
+const session = require('express-session')
+// 初始化数据库连接
+require('./model/connect')
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const signInRouter = require('./routes/signIn');
-const signUpRouter = require('./routes/signUp');
-
-
+const adminRouter = require('./routes/admin');
+const req = require('express/lib/request');
+const { nextTick } = require('process');
+// const usersRouter = require('./routes/users');
+// const signInRouter = require('./routes/signIn');
+// const signUpRouter = require('./routes/signUp');
 var app = express();
 
+//拦截并处理所有 post,会把请求到的body 放到 req 的 res.body 下面
+app.use(bodyParser.urlencoded({extended: false}))
+// 拦截所有方法 用 session处理
+app.use(session({secret: 'secret key'}))
+app.engine('art', require('express-art-template'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'art');
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//拦截请求 判断用户登陆状态
+app.use('/admin',require('./middleWare/login'))
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/signin', signInRouter);
-app.use('/signup', signUpRouter);
+// app.use('/users', usersRouter);
+// app.use('/signin', signInRouter);
+// app.use('/signup', signUpRouter);
+app.use('/admin', adminRouter);
 
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 module.exports = app;
