@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt')
 const {User} = require('../../model/user');
 module.exports = async function(req, res, next) {
     //接收请求参数
-    
     const {email,password} = req.body
     console.log(`email" ${email}`);
     if (email.trim().length == 0 || password.trim().length == 0) {

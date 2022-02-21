@@ -62,7 +62,7 @@
             <!-- 分类标题 -->
             <div class="title">
                 <h4>创建用户</h4>
-                <p class="tips">{{err}}</p>
+                <p class="tips">{{message}}</p>
             </div>
             <!-- /分类标题 -->
             <form class="form-container" id='createUser' action='/admin/edituser' method='post'>
@@ -106,10 +106,10 @@
         $('#createUser').on('submit',()=>{
             let userInput = serialToJson($('#createUser').serializeArray());
             let {username,email,password,role,state} = userInput
-            if(email.trim().length == 0 || password.trim().length == 0 || username.trim().length == 0) {
-                alert('信息没填完')
-                return false
-            }
+            // if(email.trim().length == 0 || password.trim().length == 0 || username.trim().length == 0) {
+            //     alert('信息没填完')
+            //     return false
+            // }
             console.log(userInput)
             
         })
