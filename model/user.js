@@ -48,6 +48,20 @@ let createUser = async (username,email,pw,role,state)=>{
         state: transState
     })
 }
+// let createUserNew = async (username,email,pw,role,state)=>{
+//     const salt = await bcrypt.genSalt(11);
+//     const pwresult = await bcrypt.hash(pw,salt)
+//     let transRole = role == '普通用户' ? 'user' : 'admin' 
+//     let transState = state == '启用' ? '0' : '1' 
+//     const user = await User.create({
+//         username: username,
+//         email: email,
+//         password: pwresult,
+//         role: transRole,
+//         state: transState
+//     })
+// }
+// createUserNew('xuchen','chenxu2656@gmail.com','123456','admin','启用')
 // 初始化的时候创建用户
 // createUser()
 module.exports = {
