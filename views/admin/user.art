@@ -45,7 +45,7 @@
 					</a>
                 </li>
                 <li>
-                    <a class="item" href="article.html">
+                    <a class="item" href="/admin/articlelist">
 			  			<span class="glyphicon glyphicon-th-list"></span>
 			  			文章管理
 			  		</a>

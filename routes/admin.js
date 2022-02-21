@@ -6,4 +6,6 @@ router.get('/user',require('./admin/user'))  //用户列表页
 router.get('/logout',require('./admin/logout'))  //退出登陆
 router.get('/edituser',require('./admin/edituser'))  //退出登陆
 router.post('/edituser',require('./admin/createuser'))  //退出登陆
+router.get('/articlelist',require('./admin/articleList'))  //文章列表页
+router.get('/createarticle',require('./admin/createArticle'))  //文章列表页
 module.exports = router;
