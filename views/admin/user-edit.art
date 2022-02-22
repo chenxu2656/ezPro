@@ -61,39 +61,39 @@
         <div class="main">
             <!-- 分类标题 -->
             <div class="title">
-                <h4>创建用户</h4>
+                <h4 style="display: {{ user ? 'none':''}};">创建用户</h4>
                 <p class="tips">{{message}}</p>
             </div>
             <!-- /分类标题 -->
-            <form class="form-container" id='createUser' action='/admin/edituser' method='post'>
+            <form class="form-container" id='createUser' action='{{link}}' method='post'>
                 <div class="form-group">
                     <label>用户名</label>
-                    <input name='username' type="text" class="form-control" placeholder="请输入用户名">
+                    <input name='username' type="text" class="form-control" placeholder="请输入用户名" value="{{user && user.username}}">
                 </div>
                 <div class="form-group">
                     <label>邮箱</label>
-                    <input  name='email' type="email" class="form-control" placeholder="请输入邮箱地址">
+                    <input  name='email' type="email" class="form-control" placeholder="请输入邮箱地址" value="{{user && user.email}}">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display: {{ user ? 'none':''}};">
                     <label>密码</label>
-                    <input name='password' type="password" class="form-control" placeholder="请输入密码">
+                    <input name='password' type="password" class="form-control" placeholder="请输入密码" value="{{user && user.password}}">
                 </div>
                 <div class="form-group">
                     <label>角色</label>
                     <select name='role' class="form-control">
-                        <option>普通用户</option>
-                        <option>超级管理员</option>
+                        <option value='user' {{user && user.role == 'user' ? 'selected' : ""}}>普通用户</option>
+                        <option value='admin' {{user && user.role == 'admin' ? 'selected' : ""}}>超级管理员</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>状态</label>
                     <select class="form-control" name='state'>
-                        <option>启用</option>
-                        <option>禁用</option>
+                        <option value='0' {{user && user.state == '0' ? 'selected' : ""}}>启用</option>
+                        <option value='1' {{user && user.state == '1' ? 'selected' : ""}}>禁用</option>
                     </select>
                 </div>
                 <div class="buttons">
-                    <input  type="submit" class="btn btn-primary">
+                    <input value={{button}} type="submit" class="btn btn-primary"> 
                 </div>
             </form>
         </div>
@@ -106,12 +106,6 @@
         $('#createUser').on('submit',()=>{
             let userInput = serialToJson($('#createUser').serializeArray());
             let {username,email,password,role,state} = userInput
-            // if(email.trim().length == 0 || password.trim().length == 0 || username.trim().length == 0) {
-            //     alert('信息没填完')
-            //     return false
-            // }
-            console.log(userInput)
-            
         })
     </script>
 </body>

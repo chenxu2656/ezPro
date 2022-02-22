@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Blog - Content Manager</title>
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/admin/base.css">
 </head>
 
@@ -41,13 +41,13 @@
         <div class="aside fl">
             <ul class="menu list-unstyled">
                 <li>
-                    <a class="item active" href="user.html">
+                    <a class="item" href="/admin/user">
 						<span class="glyphicon glyphicon-user"></span>
 						用户管理
 					</a>
                 </li>
                 <li>
-                    <a class="item" href="/admin/articlelist">
+                    <a class="item active" href="/admin/articlelist">
 			  			<span class="glyphicon glyphicon-th-list"></span>
 			  			文章管理
 			  		</a>
