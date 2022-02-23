@@ -16,7 +16,7 @@ module.exports = async function(req, res, next) {
             path: '/admin/edituser',
             message: err.message
         })
-        //处罚错误处理中间件
+        //触发错误处理中间件
         return next (redirectPath)
     }
     // 查询用户是否存在

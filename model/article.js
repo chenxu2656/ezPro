@@ -1,4 +1,3 @@
-const { string } = require('joi');
 const mongoose = require('mongoose');
 // 创建文章集合规则
 
@@ -14,7 +13,7 @@ const articleSchema = new mongoose.Schema ({
     },
     publishDate: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     coverImg: {
         type: String,
@@ -27,6 +26,11 @@ const articleSchema = new mongoose.Schema ({
 })
 const Aritcle =  mongoose.model('Aritcle',articleSchema)
 
+const createArticle = async (article) =>{
+    const ca = await Aritcle.create(article)
+    return ca
+}
 module.exports = {
-    Aritcle
+    Aritcle,
+    createArticle
 }

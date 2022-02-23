@@ -81,7 +81,7 @@
                 
                 <div class="form-group">
                    <label for="exampleInputFile">文章封面</label>
-                   <input type="file" name='coverImg'>
+                   <input type="file" name='coverImg' id='selectFile'>
                    <div class="thumbnail-waper">
                        <img class="img-thumbnail" src="" id='imgShwo'>
                    </div>
@@ -114,10 +114,18 @@
 
         // 获取数据
         // const editorData = editor.getData();
-        let file = document.querySelector('#imgShow')
-        file.onchange = ()=>{
+        let selectFile = document.querySelector('#selectFile')
+        let imgShow = document.querySelector('#imgShwo')
+        selectFile.onchange = function(){
             let reader = new FileReader();
-            reader.read
+            // 用户选择的文件列表
+            reader.readAsDataURL(this.files[0])
+            reader.onload = ()=>{
+                imgShow.src = reader.result;
+            }
+            // reader.onload = function(){
+            //     console.log(reader.result)
+            // }
         }
     </script>
 </body>

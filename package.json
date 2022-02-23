@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "watch:css": "sass -w public/stylesheets/style.scss:public/stylesheets/style.css",
-    "watch:node": "cross-env NODE_ENV=dev nodemon ./bin/www",
+    "db": "mongod -f /etc/mongod.conf",
+    "watch": "cross-env NODE_ENV=dev nodemon ./bin/www",
     "start": "node ./bin/www"
   },
   "dependencies": {

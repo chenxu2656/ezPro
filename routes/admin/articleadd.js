@@ -1,20 +1,24 @@
 const formidable = require('formidable')
 const path = require('path')
-module.exports = (req,res,next)=>{
+const {createArticle} = require('../../model/article');
+module.exports = (req,res)=>{
     //1. 创建表单解析对象
-    const form = new formidable.IncomingForm()
-    // 2. 配置文件上传路径
-    form.uploadDir = path.join(__dirname,'../','../','public','uploads')
-    // 3. 上传的文件保留文件后缀,默认不保留
-    form.keepExtensions = true
-    // 4. 限制文件大小
-    form.maxFileSize = 1
-    // 4. 解析表单
+    const uploadDir = path.join(__dirname,'../','../','public','uploads')
+    let fileOption = {
+        uploadDir: uploadDir,  //上传路径
+        keepExtensions: true, // 展示拓展名
+        maxFileSizeL: 2
+    }
+    const form = new formidable.IncomingForm(fileOption)
     form.parse(req,(err,fields,files)=>{
-        //fields    保存的正常的数据 除了二进制文件之外的
-        //files 保存二进制文件
-        if(err)
+        if (err)
             return res.send(err)
-        res.send(files);
+        let fileName = files.coverImg.filepath.split('public')[1]
+        fields.coverImg = fileName
+        if (!fields.publishDate)
+            delete fields.publishDate
+        console.log(fields);
+        const ca = createArticle(fields)
+        return res.redirect('/admin/articlelist')
     })
 }
