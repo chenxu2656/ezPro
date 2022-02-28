@@ -45,7 +45,11 @@ app.use('/admin', adminRouter);
 //定义一个错误处理中间件
 app.use((err,req,res,next)=>{
     //将字符串转换为对象类型
-    let result = JSON.parse(err)
-    res.redirect(`${result.path}?message=${result.message}`)
+    if (err){
+        console.log(`err: ${err}`);
+        let result = JSON.parse(err)
+        res.redirect(`${result.path}?message=${result.message}`)
+    }
+    return    
 })
 module.exports = app;

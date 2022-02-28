@@ -17,7 +17,6 @@ module.exports = (req,res)=>{
         fields.coverImg = fileName
         if (!fields.publishDate)
             delete fields.publishDate
-        console.log(fields);
         const ca = createArticle(fields)
         return res.redirect('/admin/articlelist')
     })

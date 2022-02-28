@@ -26,6 +26,9 @@
 	font-size: 14px;
 	line-height: 24px;
 	margin-top: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 /* 文章列表结束 */
